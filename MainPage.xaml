@@ -25,7 +25,7 @@
         </Grid>
 
         <!-- Staff Listing -->
-        <ListView x:Name="staffListView" ItemsSource="{Binding StaffList}" ItemSelected="OnItemSelected">
+        <ListView x:Name="staffListView" ItemsSource="{Binding StaffList}" IsEnabled="True" ItemSelected="OnItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
