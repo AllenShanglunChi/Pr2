@@ -45,6 +45,6 @@
         </ListView>
 
         <!-- Add Button -->
-        <Button Text="Add" Clicked="OnAddClicked" />
+        <Button x:Name="addButton" Text="Add" Clicked="OnAddClicked" />
     </StackLayout>
 </ContentPage>

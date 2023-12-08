@@ -11,6 +11,12 @@ namespace Pr2
             InitializeComponent();
             BindingContext = new MainPageViewModel();
             Console.WriteLine("MainPage constructor called");
+
+            // Subscribe to ItemSelected event for the ListView
+            staffListView.ItemSelected += OnItemSelected;
+
+            // Subscribe to Clicked event for the Button
+            addButton.Clicked += OnAddClicked;
         }
 
         private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -26,6 +32,7 @@ namespace Pr2
             // Deselect item
             ((ListView)sender).SelectedItem = null;
         }
+
 
         private void OnAddClicked(object sender, EventArgs e)
         {
