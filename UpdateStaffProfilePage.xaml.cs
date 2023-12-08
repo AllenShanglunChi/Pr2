@@ -35,6 +35,7 @@ namespace Pr2
             _staff.Address = addressEntry.Text;
 
             // Update the staff details in the ViewModel 
+            _viewModel.UpdateStaff(_staff);
 
             Navigation.PopAsync(); // Navigate back after updating
         }

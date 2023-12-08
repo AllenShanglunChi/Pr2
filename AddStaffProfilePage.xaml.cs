@@ -41,6 +41,18 @@ namespace Pr2
 
         private void OnSaveClicked(object sender, EventArgs e)
         {
+            
+            
+            // Validate the new staff profile
+            if (string.IsNullOrWhiteSpace(nameEntry.Text) ||
+                string.IsNullOrWhiteSpace(phoneEntry.Text) ||
+                departmentPicker.SelectedIndex == -1)
+            {
+                DisplayAlert("Validation Error", "Please fill in all required fields.", "OK");
+                return;
+            }
+
+            // Create a new staff object
             var newStaff = new Staff
             {
                 Name = nameEntry.Text,
@@ -49,7 +61,9 @@ namespace Pr2
                 Address = addressEntry.Text
             };
 
-            // Validate and save the new staff profile to the backend or local storage
+            // Save the new staff profile to the backend or local storage
+            _viewModel.SaveStaff(newStaff);
+
             // For demo purposes, add the new staff to the collection
 
             _viewModel.StaffList.Add(newStaff);
