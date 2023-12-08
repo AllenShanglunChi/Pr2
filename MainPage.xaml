@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Pr2.MainPage"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <StackLayout Margin="44">
+        <!-- Add margin on both sides -->
+        <!-- Header -->
+        <Label Text="Staff Listing" FontSize="Title" HorizontalOptions="CenterAndExpand" Margin="0,10,0,0" TextColor="Red" />
+
+        <!-- Headings -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <!-- Add space between columns -->
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Staff Name" FontSize="Medium" FontAttributes="Bold" TextColor="Red" Grid.Column="0" />
+            <Label Text="Department ID" FontSize="Medium" FontAttributes="Bold" TextColor="Red" Grid.Column="1" HorizontalOptions="End" />
+        </Grid>
+
+        <!-- Staff Listing -->
+        <ListView x:Name="staffListView" ItemsSource="{Binding StaffList}" ItemSelected="OnItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <!-- Add space between columns -->
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="{Binding Name}" FontSize="Large" Grid.Column="0" />
+                            <Label Text="{Binding DepartmentId}" FontSize="Medium" HorizontalOptions="End" Grid.Column="1" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Add Button -->
+        <Button Text="Add" Clicked="OnAddClicked" />
+    </StackLayout>
+</ContentPage>
