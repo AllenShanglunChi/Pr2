@@ -21,39 +21,24 @@ namespace Pr2
 
         private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            try
-            {
-                Debug.WriteLine("OnItemSelected executed");
+            Debug.WriteLine("OnItemSelected executed");
 
-                if (e.SelectedItem == null)
-                    return;
+            if (e.SelectedItem == null)
+                return;
 
-                var selectedStaff = e.SelectedItem as Staff;
-                Navigation.PushAsync(new StaffProfileDetailsPage(selectedStaff, (MainPageViewModel)BindingContext));
+            var selectedStaff = e.SelectedItem as Staff;
+            Navigation.PushAsync(new StaffProfileDetailsPage(selectedStaff, (MainPageViewModel)BindingContext));
 
-                // Deselect item
-                ((ListView)sender).SelectedItem = null;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error navigating to StaffProfileDetailsPage: {ex.Message}");
-            }
-
+            // Deselect item
+            ((ListView)sender).SelectedItem = null;
         }
 
         private void OnAddClicked(object sender, EventArgs e)
         {
-            try
-            {
-                Debug.WriteLine("OnAddClicked executed");
-                // Handle the Add button click event
-                Navigation.PushAsync(new AddStaffProfilePage((MainPageViewModel)BindingContext));
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error navigating to AddStaffProfilePage: {ex.Message}");
-            }
-
-        }
+            
+            Debug.WriteLine("OnAddClicked executed");
+            // Handle the Add button click event
+            Navigation.PushAsync(new AddStaffProfilePage((MainPageViewModel)BindingContext));
+    }
     }
 }
