@@ -46,5 +46,7 @@
 
         <!-- Add Button -->
         <Button x:Name="addButton" Text="Add" Clicked="OnAddClicked" />
+        <Button Text="Navigate to Staff Details" Clicked="OnNavigateToDetailsClicked" />
+
     </StackLayout>
 </ContentPage>

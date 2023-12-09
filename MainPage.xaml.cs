@@ -6,10 +6,12 @@ namespace Pr2
 {
     public partial class MainPage : ContentPage
     {
+        private MainPageViewModel myMainPageViewModel;
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = new MainPageViewModel();
+            myMainPageViewModel = new MainPageViewModel();
+            BindingContext = myMainPageViewModel;
             Console.WriteLine("MainPage constructor called");
 
             // Subscribe to ItemSelected event for the ListView
@@ -39,6 +41,26 @@ namespace Pr2
             Debug.WriteLine("OnAddClicked executed");
             // Handle the Add button click event
             Navigation.PushAsync(new AddStaffProfilePage((MainPageViewModel)BindingContext));
-    }
+        }
+
+        private void OnNavigateToDetailsClicked(object sender, EventArgs e)
+        {
+           
+            // Retrieve a sample staff member for testing (replace this with your logic)
+            var sampleStaff = myMainPageViewModel.StaffList.FirstOrDefault();
+
+            if (sampleStaff != null)
+            {
+                // Navigate to StaffProfileDetailsPage
+                Navigation.PushAsync(new StaffProfileDetailsPage(sampleStaff, myMainPageViewModel));
+            }
+            else
+            {
+                // Handle the case where there's no staff member available
+                DisplayAlert("Error", "No staff member available for testing.", "OK");
+            }
+
+        }
+
     }
 }
